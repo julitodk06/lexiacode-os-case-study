@@ -1,15 +1,15 @@
 # Evidence Register
 
-This register separates verified statements from architectural interpretation.
+This register separates CV-supported statements from architectural interpretation and confidential implementation details.
 
-| Statement                                   | Classification                | Public wording rule                                           |
-| ------------------------------------------- | ----------------------------- | ------------------------------------------------------------- |
-| 15+ operational modules                     | CV-supported delivery scope   | Use as delivered scope; do not imply 15 separate products     |
-| 25+ product, QA and security milestones     | CV-supported leadership scope | Describe as staged milestones directed                        |
-| 40% operational cycle-time reduction        | Reported business outcome     | Always qualify as associated with automation and CRM redesign |
-| USD 2.5M+ aggregate potential project value | CV-supported pipeline value   | Never describe as revenue, funding raised or contracted sales |
-| Private production and client information   | Confidential                  | Do not publish                                                |
+| Statement | Classification | Public wording rule |
+| --- | --- | --- |
+| Staged product, QA and security delivery | CV-supported leadership scope | Describe Julio's ownership as product direction, coordination, validation and delivery oversight |
+| Modular CRM and commercial workflows | CV-supported delivery scope | Describe the platform without inventing module counts or performance percentages |
+| Role-based and human-in-the-loop controls | CV and project-supported controls | Present these as product and architecture controls, not as proof of independent security certification |
+| Private source code, credentials and client data | Confidential | Do not publish |
+| Quantitative business outcomes | Evidence required | Do not publish unless the source, measurement window, method and owner are documented and the claim can be defended consistently |
 
 ## Review rule
 
-Any new public metric must identify its source, measurement window, owner and qualification before it is added to this repository.
+The final CV and Interview Defense Pack define the public claim boundaries. Any new quantitative metric requires documented evidence before it is added to this repository or the public portfolio.
