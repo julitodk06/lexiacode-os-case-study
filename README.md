@@ -8,13 +8,11 @@ Commercial teams need a single operating layer for pipeline management, follow-u
 
 ## Verified scope
 
-- 15+ operational modules delivered across the private platform.
-- 25+ staged product, QA and security milestones directed.
-- Automation and CRM redesign associated with a reported 40% reduction in operational cycle time.
+- Staged product, QA and security delivery for the private platform.
+- Modular CRM and commercial workflows with role-based access controls.
 - Human approval gates for consequential AI-assisted actions.
 - Security hardening, rate limiting, resilient integrations and regression coverage.
-
-The 40% figure is a reported operational result associated with the broader automation and CRM redesign; it is not presented as an isolated benchmark attributable to one component.
+- Public claims limited to scope that is consistent with the final CV and project records.
 
 ## Architecture at a glance
 
@@ -41,7 +39,7 @@ The private system remains the source of truth. This diagram exposes architectur
 
 ## Technology signals
 
-`React` · `Vite` · `Node.js` · `Express` · `Prisma` · `SQLite` · `REST APIs` · `GitHub Actions`
+`React` · `Vite` · `Node.js` · `Express` · `Prisma` · `SQLite` · `REST APIs` · `CI/CD Concepts`
 
 ## Repository map
 
