@@ -1,67 +1,51 @@
 # LexiaCode OS — Architecture Case Study
 
-Sanitized engineering case study for a private AI-enabled CRM and commercial-operations platform. This repository communicates system boundaries, delivery decisions and evidence without publishing client data, credentials or proprietary business logic.
+Sanitized engineering case study for **LexiaCode OS**, an AI-enabled operations platform and modular CRM. This repository outlines the full-stack architecture, API boundaries, security controls, and design decisions implemented to streamline commercial workflows.
 
-## Product context
+---
 
-Commercial teams need a single operating layer for pipeline management, follow-up, approvals, reporting and AI-assisted routines. The design goal was to reduce fragmented work while preserving human accountability and role-based control.
+## 1. Problem & Context
 
-## Verified scope
+Operations and commercial teams frequently struggle with fragmented tooling across pipeline tracking, client follow-up, and automated messaging. The objective of **LexiaCode OS** was to provide a centralized operating layer that combines automated workflows with strict **role-based access control (RBAC)** and **human-in-the-loop review boundaries** for consequential actions.
 
-- Staged product, QA and security delivery for the private platform.
-- Modular CRM and commercial workflows with role-based access controls.
-- Human approval gates for consequential AI-assisted actions.
-- Security hardening, rate limiting, resilient integrations and regression coverage.
-- Public claims limited to scope that is consistent with the final CV and project records.
+---
 
-## Architecture at a glance
+## 2. Technical Stack
+
+- **Frontend Application:** React 19, TypeScript, Tailwind CSS, Vite.
+- **Backend API:** Node.js, Express, RESTful architecture.
+- **Data & Persistence Layer:** Prisma ORM with SQLite (development/staging) and PostgreSQL (production-ready).
+- **Security & Authorization:** JWT-based authentication, RBAC middleware, strict parameter sanitization, rate-limiting.
+- **Testing & Quality:** Vitest, ESLint, automated schema validation.
+
+---
+
+## 3. Architecture at a Glance
 
 ```mermaid
 flowchart TD
-  UI["React operations UI"] --> API["Node.js / Express API"]
-  API --> AUTH["Roles and approval policies"]
-  API --> WORK["Modular business workflows"]
-  WORK --> DATA["Prisma data access"]
-  WORK --> AI["AI-assisted operations"]
-  AI --> REVIEW["Human review gate"]
-  REVIEW --> DATA
+  UI["React Operations UI"] --> API["Node.js / Express API Layer"]
+  API --> AUTH["JWT Auth & Role-Based Middleware (RBAC)"]
+  AUTH --> WORK["Modular Business Logic & CRM Controllers"]
+  WORK --> PRISMA["Prisma ORM"]
+  PRISMA --> DB[("PostgreSQL / SQLite Database")]
+  WORK --> AI["AI Automation Module"]
+  AI --> REVIEW{"Human Approval Gate"}
+  REVIEW -- Approved --> PRISMA
+  REVIEW -- Rejected --> AUDIT["Audit Log / Rejection Notice"]
 ```
 
-The private system remains the source of truth. This diagram exposes architectural intent, not deployable production topology.
+---
 
-## Engineering principles
+## 4. Key Engineering Deliverables
 
-- **Bounded automation:** AI assists work; policy and human review govern consequential actions.
-- **Explicit authorization:** access decisions are enforced at API and workflow boundaries.
-- **Modular delivery:** capabilities ship through staged milestones instead of one large release.
-- **Failure containment:** integrations use validation, rate controls and defensive error handling.
-- **Evidence-based readiness:** regression checks and security work are part of delivery, not post-launch tasks.
+1. **Modular Workflow Engine:** Decoupled business modules allowing seamless extension of contact stages, deal pipelines, and automated follow-ups.
+2. **Human-in-the-Loop Safeguards:** Any automated notification, high-value status change, or external communication requires an explicit operator confirmation before execution.
+3. **Robust Database Modeling:** Relational data schemas designed in Prisma supporting multi-stage lead lifecycles, user permissions, and tamper-evident audit trails.
+4. **Security Hardening:** Implementation of CORS restrictions, payload size limits, structured error handlers that prevent stack-trace leaks, and parameterized database queries via Prisma to eliminate SQL injection risks.
 
-## Technology signals
+---
 
-`React` · `Vite` · `Node.js` · `Express` · `Prisma` · `SQLite` · `REST APIs` · `CI/CD Concepts`
+## 5. Repository Note
 
-## Repository map
-
-```text
-.
-├── docs/
-│   ├── architecture.md
-│   ├── evidence.md
-│   └── decisions/
-│       └── ADR-001-human-approval-boundary.md
-├── README.md
-└── SECURITY.md
-```
-
-## What is intentionally excluded
-
-- Source code from the private platform
-- Secrets, credentials and deployment configuration
-- Client or user data
-- Proprietary prompts, scoring logic and commercial rules
-- Claims that cannot be supported by the CV or project records
-
-## Author
-
-[Julio Antonio Villalobo](https://github.com/julitodk06) — AI Transformation & Product Leader
+*This public repository serves as a sanitized engineering case study. Proprietary client data, internal credentials, and production secrets remain strictly private while presenting verified architectural patterns and delivery evidence.*
